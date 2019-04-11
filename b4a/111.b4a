@@ -1,0 +1,1182 @@
+﻿Build1=Default,Smart.home.v1396
+File1=00.png
+File10=garden dry.png
+File11=index.jpg
+File12=Iran.png
+File13=local_network_256.png
+File14=Main.bal
+File15=Maison Monopoly.png
+File16=o.jpg
+File17=off.png
+File18=on.png
+File19=open.png
+File2=000.jpg
+File20=polic.png
+File21=stop.png
+File3=0000.jpg
+File4=aa.jpg
+File5=aaa.png
+File6=close.png
+File7=danger.png
+File8=ff.png
+File9=gard.png
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+Library2=serial
+Library3=randomaccessfile
+Library4=phone
+Library5=audio
+Library6=persiandate
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="19"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~
+Module1=ALI
+Module2=Starter
+Module3=Door
+Module4=Garden
+Module5=Gaed
+Module6=Gaedn
+Module7=frm
+NumberOfFiles=21
+NumberOfLibraries=6
+NumberOfModules=7
+Version=8.5
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Smart Home_96.1
+	#VersionCode: 3
+	#VersionName: 3/1/96
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+
+
+
+
+End Sub
+'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnگلخانهnnnnnnnnnnnnnn 4/1.96 nnnnnnسلول خورشیدیnnnnnnnnnnn
+
+Sub Globals
+	Private ImageView_Garden As ImageView
+	Private Lbl_temp As Label
+	Private Lbl_Him As Label
+	Private Lbl_date As Label
+	Private Lbl_Time As Label
+	Private Btn_Door As Button
+	Private Btn_Kitchen As Button
+	Private Btn_Out_Light As Button
+	Private ImageView_Out_Door As ImageView
+	Private Btn_Night As Button
+	Private ImageView_Night As ImageView
+	Private Btn_Bed_1 As Button
+	Private Btn_Bed_2 As Button
+	Private ImageView_Bed1 As ImageView
+	Private ImageView_Bed2 As ImageView
+	Private Btn_Garden As Button
+	Private ImageView_off_main As ImageView
+	Private ImageView_off_decor As ImageView
+	Private Btn_off_AC As Button
+	Private Btn_on_AC As Button
+	Private SeekBar_AC As SeekBar
+	Private Label7 As Label
+	Private Label1 As Label
+	Private ImageView1_AC As ImageView
+	Private Label7_AC As Label
+	Private ImageView_Room As ImageView
+	Private Btn_on_main As Button
+	Private Btn_on_Decor As Button
+	Private Btn_off_main As Button
+	Private Btn_off_Decor As Button
+	Private Label5_Gaz As Label
+	Private Label_status_AC As Label
+	Private Label_status_light As Label
+	Private Label_status_door As Label
+	Private Btn_Security As Button
+	Private Label1_security As Label
+	Private ImageView_Secur As ImageView
+	Private ImageView_lok As ImageView
+	Private Btn_Room_on As Button
+	Private Btn_Room_off As Button
+	Private Button_Ali As Button
+	Private Label_secu_text As Label
+	Private Btn_Connect As Button
+	Private Btn_DisConnect As Button
+	Private Btn_exit As Button
+	Private Label_Cell As Label
+	Private ImageView_100 As ImageView
+	Private ImageView_200 As ImageView
+	Private ImageView_300 As ImageView
+	Private ImageView_400 As ImageView
+	Private ImageView_Garden_dry As ImageView
+	Private Label_Ac712 As Label
+	Private Label_Soild As Label
+	
+'----------------------------------------------------	
+	Dim s1 As Serial
+'**********************************************  فعال سازی تایمر ساعت 
+	Dim timer1 As Timer
+	timer1.Initialize("Timer1", 1000)
+    timer1.Enabled = True
+'**********************************************  فعال سازی کتابخانه تاریخ
+    Dim date1 As PersianDate
+'**********************************************
+    Dim Sterem As AsyncStreams
+'   ...........................................
+    Dim s1 As Serial
+'......................................................
+    Dim temp As String
+    Dim hum As String 
+	Dim Gaz As String
+	Dim Secu As String
+	Dim Cell As String
+	Dim soild As String
+	Dim Ac712 As String
+'	----------------------------------
+
+     Dim  COUNTER1 As Int = 1
+'     Dim  COUNTER2 As Int = 1
+     Dim  COUNTER3 As Int = 1
+     Dim  COUNTER4 As Int = 1
+     Dim  COUNTER5 As Int = 1
+     Dim  COUNTER6 As Int = 1
+     Dim  COUNTER7 As Int = 1
+     Dim  COUNTER8 As Int = 1
+     
+'---------------------------------معرفی متغیر برای فعال سازی ویبره گوشی---------     
+	 Dim vibra As PhoneVibrate
+	 
+'---------------------------------- مقدار دهی اولیه سرعت فن-------------  
+ 
+     Dim speed1 As String = "SS128SE";
+'---------------------------------------------تعریف متغییر برای پخش صوت ----------  
+     Dim b1 As Beeper	
+'---------------------------------------     
+     Dim m2 As String 
+'------------------------------------------	
+     Dim C As String 
+	
+	
+
+	
+	
+	
+	
+	
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	
+	Activity.LoadLayout("Main")
+	
+	s1.Initialize("Bluetooth")
+
+	
+	
+	    Btn_on_Decor.TextColor = 0xFFFCFFFE
+	    Btn_on_Decor.Enabled = True
+	    Btn_on_main.TextColor = 0xFFFCFFFE
+	
+End Sub
+
+Sub Activity_Resume
+	
+	If s1.IsEnabled = False Then
+		
+		Msgbox("Please turn on your Blutooth mobile phone", "Notice")
+		
+       
+		
+	End If
+	
+End Sub
+'..............................معرفی اونت (نیم بلوتوث) پورت سریال......................
+Sub Bluetooth_Connected (Success As Boolean)
+	
+	  If Success = True Then
+		
+		 Sterem.Initialize(s1.InputStream ,s1.OutputStream ,"DATE")
+		 
+         Btn_Connect.Enabled = False
+		 Btn_Connect.TextColor = 0xFF020202
+		 
+		 
+	     Btn_DisConnect.Enabled = True
+	     Btn_DisConnect.TextColor = 0xFFFFFFFF
+		 
+'		 Label7_AC.Visible = True
+	
+ToastMessageShow("Its Success",False)
+'--------------------------------------------------------------------------------		
+	Else If Success = False Then
+		
+		   Btn_Connect.Enabled = True
+		  
+		   
+		   ToastMessageShow("Its failed",False) 
+			
+    End If
+	
+End Sub
+Sub Timer1_Tick
+   
+    Dim tim As Long = DateTime.Now
+    Lbl_Time.Text = DateTime.Time(tim)
+'**********************************************  نمایش تاریخ شمسی
+	Dim y As Long = DateTime.GetYear(tim)
+	Dim m As Long = DateTime.GetMonth(tim)
+	Dim d As Long = DateTime.GetDayOfMonth(tim)
+	
+	Lbl_date.Text = date1.getDate(y,m,d,"/")
+
+	
+End Sub
+'----------------------------------------------
+Sub Btn_Connect_Click
+	
+	Try
+		Dim m1 As Map
+	    Dim l1 As List
+	    Dim result As Int
+	
+	m1.Initialize
+	l1.Initialize
+	
+	m1 = s1.GetPairedDevices
+	For i = 0 To m1.Size-1
+		l1.Add(m1.GetKeyAt(i))
+	Next
+	
+	result = InputList(l1,"Select One Of Device",-1)
+	
+   s1.Connect(m1.Get(l1.Get(result)))     'Connecting
+   
+   '----------------------------------------------------------------------------------		
+	
+		
+		Btn_Door.Enabled = True
+		Btn_Garden.Enabled = True
+		Btn_Kitchen.Enabled = True
+	    Btn_Security.Enabled = True
+		Btn_off_AC.Enabled = True
+	    Btn_on_AC.Enabled = True
+		Btn_Out_Light.Enabled = True
+	    Btn_Night.Enabled = True
+	    Btn_Bed_1.Enabled = True
+	    Btn_Bed_2.Enabled = True
+		Btn_off_Decor.Enabled = True
+		Btn_off_main.Enabled = True
+		Btn_on_main.Enabled = True
+		Btn_Room_off.Enabled = True
+		Btn_Room_on.Enabled = True
+'------------------------------------------------   
+   
+	Catch
+		Msgbox("Hardware not connected", "Notice")
+	End Try
+	
+		
+	
+End Sub
+'---------------------------------------------------
+Sub Btn_DisConnect_Click
+	
+	 Btn_Connect.Enabled = True
+	 Btn_Connect.TextColor = 0xFFFD00FD
+	 
+	 Btn_DisConnect.TextColor = 0xFFFCE100
+	 
+	 
+	 
+	ToastMessageShow("Your connection via Bluetooth disconnected",False)
+	
+	s1.Disconnect
+	
+	
+End Sub
+'-------------------------------------------------------
+Sub DATE_NewData (Buffer() As Byte)
+	
+	Dim input As String
+    input = BytesToString(Buffer, 0, Buffer.Length, "UTF-8")
+	temp =  ALI.WORD_Filter (input, "T","t")
+    hum  =  ALI.WORD_Filter (input, "H","h")
+	Gaz =   ALI.WORD_Filter (input, "G","g")
+	Secu =  ALI.WORD_Filter (input, "Q","q")
+	Cell =  ALI.WORD_Filter (input, "V","v")
+	soild =  ALI.WORD_Filter (input, "S","s")
+'	Ac712 =  ALI.WORD_Filter (input, "A","a")
+	
+
+'------------------------------------------------ دزدگیر --------------------------------	
+
+If m2 = 0 Then
+  
+	
+	   Dim data() As Byte
+       send_data("RS_SecOn_RE")	
+       Sterem.Write(data)
+	   
+	   ImageView_lok.Visible = True
+		
+	
+If Secu = 1 Then
+	
+        ImageView_lok.Visible = False
+	    ImageView_Secur.Visible = True
+	
+	    vibra.Vibrate(2000)
+	
+        b1.Initialize(2000,2000)
+	    b1.Beep
+		
+Dim result As Int
+
+result = Msgbox2("Please call the police ", "Theft alert", "Yes", "", "No", LoadBitmap(File.DirAssets, "aaa.png"))
+
+If result = DialogResponse.POSITIVE Then 
+	
+       ImageView_Secur.Visible = False
+	   
+
+	   Dim data() As Byte
+       send_data("RS_SecOff_RE")
+       Sterem.Write(data)
+	 
+	
+End If
+End If
+End If
+
+
+'----------------------------------
+	If temp <> "" Then
+      Lbl_temp.Text = temp & " °C"
+	  
+   End If
+
+   If hum <> "" Then
+   	
+     Lbl_Him.Text = hum  & " %"
+	 
+  End If
+  
+'  If Ac712 <> "" Then
+'   	
+'  Label_Ac712.Text = Ac712  & "Mv"
+'	 
+'  End If
+  
+'-----------------------وضعیت کیفیت هوا--------------  
+  
+Try
+	
+	If (Gaz>=0 And Gaz<400) Then
+		Label5_Gaz.Text =("Good air quality" )
+		
+	Else If (Gaz>=400 And Gaz<750) Then
+		Label5_Gaz.Text = ("Unusual air quality" )
+'		b1.Initialize(2000,1823)
+'	    b1.Beep
+'		
+'	Else If (Gaz>=400 And Gaz<750) Then
+'		Label5.Text = "کیفیت هوا خطرناک"
+'		vibra.Vibrate(1000)
+		
+	Else If (Gaz>=750) Then
+	   Label5_Gaz.Text = ( " The risk of gas leaks" )
+'	   vibra.Vibrate(2000)
+		b1.Initialize(5000,1823)
+	    b1.Beep
+	   Msgbox("Please cut the risk of death house gas main valve", "Gas leak alarm")
+
+    
+    End If
+
+Catch
+'	ToastMessageShow("سنسور گاز یافت نشد",False)
+End Try
+'----------------------------------وضعیت انرژی خورشیدی------------------------
+Try
+	
+	If (Cell>=0 And Cell<50) Then
+		
+		Label_Cell.Text =("Without Energy " )
+		ImageView_100.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_200.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_300.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_400.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		
+		
+	Else If (Cell>=50 And Cell<150) Then
+		
+		Label_Cell.Text = ("Low Energy" )
+		ImageView_100.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_200.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_300.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_400.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'		b1.Initialize(2000,1823)
+'	    b1.Beep
+'		
+	Else If (Cell>=150 And Cell<250) Then
+		
+		Label_Cell.Text = ("Average Energy" )
+		ImageView_100.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_200.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_300.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+		ImageView_400.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'		vibra.Vibrate(1000)
+    Else If (Cell>=250 And Cell<350) Then
+		
+		Label_Cell.Text = ("Full Energy" )
+		ImageView_100.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_200.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_300.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_400.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'		vibra.Vibrate(1000)
+		
+	Else If (Cell>=350) Then
+		
+	   Label_Cell.Text = ("Maximum Energy" )
+	   ImageView_100.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_200.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_300.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+		ImageView_400.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+'	   vibra.Vibrate(2000)
+		b1.Initialize(5000,1823)
+	    b1.Beep
+		ToastMessageShow("Solar energy production is at its maximum position",True)
+'	   Msgbox("تولید انرزی خورشیدی در وضعیت ماکزیمم می باشد", "هشدار ")
+
+    
+    End If
+
+Catch
+'	ToastMessageShow("سنسور گاز یافت نشد",False)
+End Try
+
+'----------------------- وضعیت رطوبت گلخانه --------------  
+'  
+Try
+	
+	
+	
+	If (soild>=850) Then
+		
+	   Label5_Gaz.Visible = False
+	   Label_Soild.Visible = True
+	   Label_Soild.Text = ("The soil is Dry" )
+	   
+	   ImageView_Garden_dry.Visible =True
+	   ImageView_Garden_dry.SetBackgroundImage(LoadBitmap(File.DirAssets,"garden dry.png"))
+	   
+'	   b1.Initialize(5000,1823)
+'	   b1.Beep
+	   
+	Else If (soild>=100 And soild<360) Then
+		
+		Label_Soild.Text = ("Moist soil")
+	    Label_Soild.Visible = False
+		Label5_Gaz.Visible =True
+		
+		ImageView_Garden_dry.Visible = False
+		ImageView_Garden.Visible = False
+		
+		
+    Else If (soild>=360 And soild<850) Then
+		
+		Label_Soild.Text = ("Need watering" )
+        Label_Soild.Visible = True
+        Label5_Gaz.Visible = False
+		
+		ImageView_Garden_dry.Visible = False
+		ImageView_Garden.Visible = True
+		ImageView_Garden.SetBackgroundImage(LoadBitmap(File.DirAssets,"gard.png"))
+    End If
+
+Catch
+
+End Try
+
+End Sub
+'----------------------------------------------
+Sub DATE_Error
+	
+	ToastMessageShow("Send the information problem occurred",False)
+	
+End Sub
+'-----------------------------------------------------
+Sub DATE_Terminated
+	
+	ToastMessageShow("For transmitting information has been lost",False)
+	
+End Sub
+'---------------------------------------------------
+Sub Btn_exit_Click
+	
+Dim result As Int
+  
+   result =	Msgbox2("Do you want to exit ?" ,"Exit the program","Yes","","No", LoadBitmap(File.DirAssets,"ff.png"))
+ 
+If result = DialogResponse.POSITIVE   Then
+	
+   ExitApplication
+   
+Else If result = DialogResponse.NEGATIVE  Then
+	
+	
+End If
+
+End Sub
+'------------------------ Door-----------------------
+Sub Btn_Door_Click
+	
+	
+	 COUNTER1 = COUNTER1 + 1
+	 
+     Dim A As String 
+	  A = COUNTER1 Mod 2
+	
+If A = 1 Then
+	
+	   Btn_Door.Text = "Close "
+	   Label_status_door.Text ="Close Door"
+	   
+	   Dim data() As Byte
+       send_data("RS_DoorClose_RE")	
+       Sterem.Write(data)
+	   
+	    b1.Initialize(1000,1500)
+	    b1.Beep
+		
+	   Label_status_light.Text = "Out Door Light Off"
+	   ImageView_Out_Door.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	   
+	   
+
+Else 
+	
+
+	   Btn_Door.Text = "Open"
+	   Label_status_door.Text ="Open Door"
+	  
+       Dim data() As Byte
+       send_data("RS_DoorOpen_RE")
+       Sterem.Write(data)
+	   
+	   Label_status_light.Text = "Out Door Light On"
+	   ImageView_Out_Door.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	   
+        b1.Initialize(2000,2000)
+	    b1.Beep
+	   
+End If  
+
+	
+End Sub
+'*********************************  Kitchen Pin 0 **********************************
+'Sub Btn_Kitchen_Click
+'	
+'	  COUNTER2 = COUNTER2 + 1
+'	 
+'      Dim m As String 
+'	  m = COUNTER2 Mod 2
+'	
+'	If m = 0 Then
+'		
+'	   Dim data() As Byte
+'       send_data("RS_Kiton_RE")	
+'       Sterem.Write(data)
+'	  
+'	Else
+'	   
+'	   Dim data() As Byte
+'       send_data("RS_Kitoff_RE")
+'       Sterem.Write(data)
+'	  
+'	  
+'	End If
+'	
+'
+'End Sub
+
+
+'*********************************  Out Door Pin 1 **********************************
+Sub Btn_Out_Light_Click
+	
+		
+	  COUNTER3 = COUNTER3 + 1
+	 
+      Dim C As String 
+	  C = COUNTER3 Mod 2
+
+	
+	If C = 1 Then
+		
+		Label_status_light.Text = "Out Door Light On"
+	
+	    Dim data() As Byte
+        send_data("RS_LightDoorOn_RE")	
+        Sterem.Write(data)
+
+	   ImageView_Out_Door.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	 
+	Else
+	   
+	   Label_status_light.Text = "Out Door Light Off"
+        Dim data() As Byte
+       send_data("RS_LightDoorOff_RE")
+       Sterem.Write(data)
+	  
+      ImageView_Out_Door.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	 
+	End If
+	
+
+End Sub
+'*********************************  Main Light  **********************************
+Sub Btn_on_main_Click
+	
+	
+	Label_status_light.Text = "Main Light On"
+    ImageView_off_main.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	
+'........................................................	
+ 
+		
+	   Dim data() As Byte
+       send_data("RS_Mainon_RE")	
+       Sterem.Write(data)
+	  	
+
+End Sub
+
+Sub Btn_off_main_Click
+	
+	Label_status_light.Text ="Main Light Off"
+	ImageView_off_main.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'..................................................	
+	
+	   Dim data() As Byte
+       send_data("RS_Mainoff_RE")
+       Sterem.Write(data)
+	  
+	
+End Sub
+'********************************* Room On   **********************************
+Sub Btn_Room_on_Click
+	
+	
+	  Label_status_light.Text = "All Light On"
+	  
+	  ImageView_Room.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	
+	  Dim data() As Byte
+      send_data("RS_RoomOn_RE")	
+      Sterem.Write(data)
+'------------------------------------------- Night ----------------------------------------------
+
+       Btn_Night.Enabled = False
+	   Btn_Night.Text = "INactivate"
+	   Btn_Night.TextColor = 0xFF12F411
+	   ImageView_Night.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+
+'--------------------------------------------- Bed 1 --------------------------------------------
+       Btn_Bed_1.Enabled = False
+	   Btn_Bed_1.Text = "INactivate"
+	   Btn_Bed_1.TextColor = 0xFF12F411
+	   ImageView_Bed1.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+
+'-------------------------------------------- Bed 2 ---------------------------------------------
+
+       Btn_Bed_2.Enabled = False
+	   Btn_Bed_2.Text = "INactivate"
+	   Btn_Bed_2.TextColor = 0xFF12F411
+	   ImageView_Bed2.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+
+'------------------------------------------------------ Main Light -----------------------------------
+       Btn_off_main.Enabled = False
+	   Btn_off_main.TextColor = 0xFF665255
+	   Btn_on_main.Enabled = False
+	   Btn_on_main.Text ="INactivate"
+	   Btn_on_main.TextSize = 14
+	   Btn_on_main.TextColor = 0xFF040404
+	 
+	   ImageView_off_main.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	   
+'------------------------------------------------------ Decor Light -----------------------------------
+       Btn_off_Decor.Enabled = False
+	   Btn_off_Decor.TextColor = 0xFF665255
+	   Btn_on_Decor.Enabled = False
+	   Btn_on_Decor.Text = "INactivate"
+	   Btn_on_Decor.TextSize = 14
+	   Btn_on_Decor.TextColor = 0xFF040404
+	   
+	   ImageView_off_decor.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	   
+
+End Sub
+'********************************* Room Off   **********************************
+Sub Btn_Room_off_Click
+	
+	 Label_status_light.Text = "All Light Off"
+	
+	  ImageView_Room.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	
+	  Dim data() As Byte
+      send_data("RS_RoomOff_RE")
+      Sterem.Write(data)
+'---------------------------------------------- Night -------------------------------------------	
+	   Btn_Night.Enabled =True
+	   Btn_Night.Text = "Night"
+	   Btn_Night.TextColor = 0xFFFEFEFE
+	   ImageView_Night.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'-------------------------------------------------- Bed 1 ---------------------------------------	
+	   Btn_Bed_1.Enabled =True
+	   Btn_Bed_1.Text = "Bed Room 1"
+	   Btn_Bed_1.TextColor = 0xFFFEFEFE
+	   ImageView_Bed1.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	   
+'---------------------------------------------------- Bed 2 -------------------------------------
+       Btn_Bed_2.Enabled =True
+	   Btn_Bed_2.Text = "Bed Room 2"
+	   Btn_Bed_2.TextColor = 0xFFFEFEFE
+	   ImageView_Bed2.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+
+'---------------------------------------------------- Main Light -------------------------------------	
+       Btn_off_main.Enabled = True
+	   Btn_off_main.TextColor = 0xFFFCFFFE
+	   Btn_on_main.Enabled =True
+	   Btn_on_main.TextSize = 18
+	   Btn_on_main.Text = "ON"
+	   Btn_on_main.TextColor = 0xFFFEFEFE
+	   ImageView_off_main.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	   
+'---------------------------------------------------- Decor Light -------------------------------------	
+       Btn_off_Decor.Enabled = True
+	   Btn_off_Decor.TextColor = 0xFFFCFFFE
+       Btn_on_Decor.Enabled =True
+	   Btn_on_Decor.TextSize = 18
+	   Btn_on_Decor.Text = "ON"
+	   Btn_on_Decor.TextColor = 0xFFFEFEFE
+	 
+	   ImageView_off_decor.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	
+End Sub
+'*********************************  Night  **********************************
+Sub Btn_Night_Click
+	
+	
+	  COUNTER4 = COUNTER4 + 1
+      Dim E As String 
+	  E = COUNTER4 Mod 2
+	
+	If E = 1 Then
+		
+		Label_status_light.Text = "Light Sleep On"
+	   
+	   ImageView_Night.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	   
+	   Dim data() As Byte
+       send_data("RS_Nighton_RE")	
+       Sterem.Write(data)
+	  
+	Else 
+		
+		Label_status_light.Text =  "Light Sleep Off"
+	   
+      ImageView_Night.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	 
+	   Dim data() As Byte
+       send_data("RS_Nightoff_RE")
+       Sterem.Write(data)
+	  
+	End If
+	
+	
+End Sub
+'*********************************  Bed Room 2  **********************************
+Sub Btn_Bed_2_Click
+	
+	COUNTER5 = COUNTER5 + 1
+	 
+      Dim F As String 
+	  F= COUNTER5 Mod 2
+
+	If F = 1 Then
+		
+		Label_status_light.Text = "  bedroom 2 Light On"
+		
+	   ImageView_Bed2.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	  
+	   Dim data() As Byte
+       send_data("RS_Bed2on_RE")	
+       Sterem.Write(data)
+	  
+	Else
+		
+		Label_status_light.Text =" bedroom 2 Light Off"
+	   
+       ImageView_Bed2.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	 
+	   Dim data() As Byte
+       send_data("RS_Bed2off_RE")
+       Sterem.Write(data)
+	  
+	End If
+	
+End Sub
+'*********************************  Bed Room 1  **********************************
+Sub Btn_Bed_1_Click
+	
+	COUNTER6 = COUNTER6 + 1
+	 
+     Dim G As String 
+	  G = COUNTER6 Mod 2
+'    ToastMessageShow(m,False)	
+	
+	If G = 1 Then
+		
+		Label_status_light.Text = "  bedroom 1 Light On"
+		
+	   ImageView_Bed1.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+	   
+	   Dim data() As Byte
+       send_data("RS_Bed1on_RE")	
+       Sterem.Write(data)
+	  
+	Else
+		
+		Label_status_light.Text ="  bedroom 1 Light Off"
+	       
+      ImageView_Bed1.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+	 
+	   Dim data() As Byte
+       send_data("RS_Bed1off_RE")
+       Sterem.Write(data)
+	  
+	End If
+	
+End Sub
+'*********************************  Garden **********************************
+Sub Btn_Garden_Click
+
+COUNTER7 = COUNTER7 + 1
+	 
+     Dim m As String 
+	  m = COUNTER7 Mod 2
+
+'	Try
+		
+	If m = 0 Then
+		
+	Label5_Gaz.Visible =False
+    Label_Soild.Visible =True
+	
+  
+	
+'		Label_Cell.Visible = True		
+		
+		
+'		Button1.Color = 0xFFD72424
+'		Btn_Out_Light.Text = "ON"
+'		Button1.SetColorAnimated(100,0xFF6BD61A,0xFFD72424)
+'	ImageView_Garden.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+'	   Dim data() As Byte
+'       data = "G".GetBytes("UTF8")
+'       Sterem.Write(data)
+	  
+	Else
+		
+		Label_Soild.Visible = False
+		Label5_Gaz.Visible =True
+'		
+'	   Label_Cell.Visible = False	
+'	   Button1.Color =	0xFF6BD61A
+'	  Btn_Out_Light.Text = "Off"
+'	   Button1.SetColorAnimated(100,0xFFD72424,0xFF6BD61A)
+'     ImageView_Garden.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'	  Dim data() As Byte
+'      data = "g".GetBytes("UTF8")
+'      Sterem.Write(data)
+	  
+	End If	
+	
+'		Catch
+'			
+'		End Try
+	
+	
+End Sub
+
+'*********************************  Security **********************************
+	Sub Btn_Security_Click
+		
+	
+	
+
+COUNTER7 = COUNTER7 + 1
+	 
+      Dim m2 As String 
+	  m2 = COUNTER7 Mod 2
+
+   
+		
+If m2 = 0 Then
+
+	
+        Btn_Security.Text = "Active"
+		Btn_Security.TextColor = 0xFF000000
+		ImageView_lok.Visible = True
+        ImageView_lok.SetBackgroundImage(LoadBitmap(File.DirAssets,"00.png"))
+'------------------------------------------------------------------		
+	    Label_secu_text.Visible = True
+		Label_status_AC.Visible = False
+	    Label_status_door.Visible = False
+	    Label_status_light.Visible = False
+		Label_status_AC.Visible = False
+'----------------------------------------------------------------		
+	   Dim data() As Byte
+       send_data("RS_SecOn_RE")	
+       Sterem.Write(data)
+'------------------------------------------------------------------
+
+Btn_Door.Enabled = False
+
+Btn_Bed_1.Enabled = False
+Btn_Bed_1.TextColor = 0xFF665255
+
+Btn_Bed_2.Enabled = False
+Btn_Bed_2.TextColor = 0xFF665255
+
+Btn_Night.Enabled = False
+Btn_Night.TextColor = 0xFF665255
+
+Btn_off_AC.Enabled = False
+Btn_off_AC.TextColor = 0xFF665255
+
+Btn_on_AC.Enabled = False
+Btn_on_AC.TextColor = 0xFF665255
+
+Btn_off_Decor.Enabled = False
+Btn_off_Decor.TextColor = 0xFF665255
+
+Btn_on_Decor.Enabled = False
+Btn_on_Decor.TextColor = 0xFF665255
+
+Btn_off_main.Enabled = False
+Btn_off_main.TextColor = 0xFF665255
+
+Btn_on_main.Enabled = False
+Btn_on_main.TextColor = 0xFF665255
+
+Btn_Out_Light.Enabled = False
+Btn_Out_Light.TextColor = 0xFF665255
+
+Btn_Room_off.Enabled = False
+Btn_Room_off.TextColor = 0xFF665255
+
+Btn_Room_on.Enabled = False
+Btn_Room_on.TextColor = 0xFF665255
+
+SeekBar_AC.Enabled = False
+
+
+
+Else
+	
+	   
+'       Btn_Security.Text = "INactivate"
+	   ImageView_lok.Visible = False
+'       ImageView_lok.SetBackgroundImage(LoadBitmap(File.DirAssets,"open.png"))
+'-------------------------------------------
+        Label_secu_text.Visible = False
+        Label_status_AC.Visible = True
+	    Label_status_door.Visible =True
+	    Label_status_light.Visible = True
+		Label_status_AC.Visible =True
+'--------------------------------------------------- 
+	   Dim data() As Byte
+       send_data("RS_SecOff_RE")
+       Sterem.Write(data)
+'------------------------------------------------------------------	 
+
+Btn_Door.Enabled = True
+
+Btn_Bed_1.Enabled = True
+Btn_Bed_1.TextColor = 0xFFFCFFFE
+
+Btn_Bed_2.Enabled =True
+Btn_Bed_2.TextColor = 0xFFFCFFFE
+
+Btn_Night.Enabled = True
+Btn_Night.TextColor = 0xFFFCFFFE
+
+Btn_off_AC.Enabled = True
+Btn_off_AC.TextColor = 0xFFFCFFFE
+
+Btn_on_AC.Enabled = True
+Btn_on_AC.TextColor = 0xFFFCFFFE
+
+Btn_off_Decor.Enabled = True
+Btn_on_AC.TextColor = 0xFFFCFFFE
+
+Btn_on_Decor.Enabled = True
+Btn_on_Decor.TextColor = 0xFFFCFFFE
+
+Btn_off_Decor.Enabled = True
+Btn_off_Decor.TextColor = 0xFFFCFFFE
+
+Btn_off_main.Enabled = True
+Btn_off_main.TextColor = 0xFFFCFFFE
+
+Btn_on_main.Enabled = True
+Btn_on_main.TextColor =0xFFFCFFFE
+
+Btn_Out_Light.Enabled = True
+Btn_Out_Light.TextColor = 0xFFFCFFFE
+
+Btn_Room_off.Enabled = True
+Btn_Room_off.TextColor = 0xFFFCFFFE
+
+Btn_Room_on.Enabled = True
+Btn_Room_on.TextColor = 0xFFFCFFFE
+
+SeekBar_AC.Enabled =True
+
+Btn_Security.Text = "Security"
+Btn_Security.TextColor = 0xFFFCFFFE   
+  End If 
+
+End Sub
+'-----------------------------------------------------
+Sub ImageView_Secur_Click
+	
+ImageView_Secur.Visible = False
+	
+End Sub
+
+
+
+'*********************************  Decor Light  **********************************
+Sub Btn_on_Decor_Click
+	
+	
+	
+	   Label_status_light.Text = "Decor Light On"
+
+	   ImageView_off_decor.SetBackgroundImage(LoadBitmap(File.DirAssets,"on.png"))
+'........................................................	
+	
+	   Dim data() As Byte
+       send_data("RS_Decoron_RE")
+       Sterem.Write(data)
+	
+
+End Sub
+
+Sub Btn_off_Decor_Click
+	
+	  Label_status_light.Text = "Decor Light Off"
+	
+      ImageView_off_decor.SetBackgroundImage(LoadBitmap(File.DirAssets,"off.png"))
+'..................................................	
+	
+	   Dim data() As Byte
+       send_data("RS_Decoroff_RE")
+       Sterem.Write(data)
+	  
+	
+End Sub
+
+'------------------------------------------------------------------------------
+Sub SeekBar_AC_ValueChanged (Value As Int, UserChanged As Boolean)
+	
+	Dim speed As String = "SS"&Value&"SE"
+    speed1 = speed	
+	Label7_AC.Text = Value
+'vibrat1.Vibrate(10)
+    Dim data() As Byte
+    data = speed.GetBytes("UTF-8")
+    Sterem.Write(data)
+	
+	
+	
+	
+End Sub
+'--------------------------------------  Air Coolling --------------------
+Sub Btn_on_AC_Click
+	
+	
+     Label_status_AC.Text = "On Cooler"
+	 
+      Btn_on_AC.Text = "Set"
+      Btn_on_AC.TextColor = 0xFF000000
+	  
+
+
+	  
+	  Dim data() As Byte
+      send_data("RS_AcOn_RE"&speed1)	
+      Sterem.Write(data)
+	
+	
+End Sub
+
+Sub Btn_off_AC_Click
+
+	Label_status_AC.Text = "Off Cooler"
+	
+	Btn_off_AC.TextColor = 0xFFFEFEFE
+	
+	Btn_on_AC.Text = "A/C ON"
+	Btn_on_AC.TextColor = 0xFFFEFEFE
+	
+	
+	
+	  Dim data() As Byte
+      send_data("RS_AcOff_RE")
+      Sterem.Write(data)
+	
+	
+End Sub
+
+
+'################################################## تابع ارسال اطلاعات ##################################-
+
+Sub send_data(go As String)	
+'vibrat1.Vibrate(100)	
+Dim data() As Byte
+data = go.GetBytes("UTF-8")
+Sterem.Write(data)
+Log(go)
+End Sub
+
+
